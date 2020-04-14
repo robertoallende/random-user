@@ -19,6 +19,7 @@ package com.robertoallende.randomuser.common;
  */
 
 import android.util.Log;
+
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

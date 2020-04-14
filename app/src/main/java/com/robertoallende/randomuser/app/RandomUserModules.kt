@@ -22,7 +22,7 @@ val allModules
     get() = listOf(dataModule, userListViewModel)
 
 val dataModule = module {
-    
+
     single<Converter.Factory> { MoshiConverterFactory.create() }
 
     single<Interceptor> { ChuckInterceptor(androidContext()) }

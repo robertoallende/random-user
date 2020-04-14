@@ -8,6 +8,6 @@ class RandomUserApi(
 ) : ApiContract {
 
     override suspend fun getUsers(): RandomUserResponse {
-       return apiService.getNewsFeed(BuildConfig.API_SEED)
+        return apiService.getNewsFeed(BuildConfig.API_SEED)
     }
 }

@@ -28,6 +28,4 @@ class UserListViewModel(
             _randomUsers.postValue(dataRepository.getUsers())
         }
     }
-
-
 }
