@@ -17,6 +17,21 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    flavorDimensions "default"
+    productFlavors {
+        dev {
+            dimension "default"
+            applicationIdSuffix = ".dev"
+            resValue "string", "app_name", "Random User Dev"
+            buildConfigField "String", "API_URL", '"https://randomuser.me/api/?seed=foo"'
+        }
+        prod {
+            dimension "default"
+            resValue "string", "app_name", "Random User"
+            buildConfigField "String", "API_URL", '"https://randomuser.me/api/?seed=bar"'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -33,7 +48,7 @@ ext {
     test_ext_version = "1.1.1"
     espresso_core_version = "3.2.0"
 
-    okhttp_version = "1.8.0"
+    okhttp_version = "3.11.0"
     retrofit_version = "2.6.0"
     retrofit_moshi_adapter_version = "2.6.0"
     moshi_version = "1.8.0"
@@ -45,9 +60,8 @@ ext {
     chuck_version = "1.1.0"
     timber_version = "4.7.1"
     idling_resource_version = "3.2.0"
-    livedata_testing_version = ""
-    lifecycle_version = "1.1.0"
-    koin_test = ""
+    livedata_testing_version = "1.1.0"
+    lifecycle_version = "2.2.0"
 }
 
 dependencies {
