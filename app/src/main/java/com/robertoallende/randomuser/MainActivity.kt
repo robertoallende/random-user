@@ -1,4 +1,3 @@
-
 package com.robertoallende.randomuser
 
 import androidx.appcompat.app.AppCompatActivity
