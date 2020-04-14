@@ -6,10 +6,12 @@ import com.robertoallende.randomuser.data.ApiContract
 import com.robertoallende.randomuser.data.ApiService
 import com.robertoallende.randomuser.data.RandomUserApi
 import com.robertoallende.randomuser.data.RandomUserDataRepository
+import com.robertoallende.randomuser.screens.user_list.UserListViewModel
 import com.squareup.moshi.Moshi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Converter
 import retrofit2.Retrofit
@@ -17,7 +19,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 val allModules
-    get() = listOf(dataModule)
+    get() = listOf(dataModule, userListViewModel)
 
 val dataModule = module {
     
@@ -52,4 +54,8 @@ val dataModule = module {
     }
 
     single<ApiContract> { RandomUserDataRepository(get()) }
+}
+
+val userListViewModel = module {
+    viewModel { UserListViewModel(get()) }
 }
