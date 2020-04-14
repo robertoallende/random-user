@@ -25,12 +25,16 @@ android {
             dimension "default"
             applicationIdSuffix = ".dev"
             resValue "string", "app_name", "Random User Dev"
-            buildConfigField "String", "API_URL", '"https://randomuser.me/api/?seed=foo"'
+            buildConfigField "String", "API_URL", '"https://randomuser.me"'
+            buildConfigField "String", "API_PREFIX", '"/api/"'
+            buildConfigField "String", "API_SEED", '"foobar"'
         }
         prod {
             dimension "default"
             resValue "string", "app_name", "Random User"
-            buildConfigField "String", "API_URL", '"https://randomuser.me/api/?seed=bar"'
+            buildConfigField "String", "API_URL", '"https://randomuser.me"'
+            buildConfigField "String", "API_PREFIX", '"/api/"'
+            buildConfigField "String", "API_SEED", '"barfoo"'
         }
     }
 
@@ -72,8 +76,9 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$app_compat_version"
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$test_ext_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"

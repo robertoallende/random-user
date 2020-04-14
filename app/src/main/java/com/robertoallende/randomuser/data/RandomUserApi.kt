@@ -1,5 +1,6 @@
 package com.robertoallende.randomuser.data
 
+import com.robertoallende.randomuser.BuildConfig
 import com.robertoallende.randomuser.data.models.RandomUserResponse
 
 class RandomUserApi(
@@ -7,6 +8,6 @@ class RandomUserApi(
 ) : ApiContract {
 
     override suspend fun getUsers(): RandomUserResponse {
-       return apiService.getNewsFeed()
+       return apiService.getNewsFeed(BuildConfig.API_SEED)
     }
 }

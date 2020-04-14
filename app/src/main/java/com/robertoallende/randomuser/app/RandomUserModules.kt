@@ -30,9 +30,9 @@ val dataModule = module {
     single<OkHttpClient> {
         OkHttpClient.Builder()
             .addInterceptor(get())
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .readTimeout(120, TimeUnit.SECONDS)
-            .writeTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
             .build()
     }
 
@@ -52,8 +52,6 @@ val dataModule = module {
         val retrofitApiService = get<Retrofit>().create(ApiService::class.java)
         RandomUserApi(retrofitApiService)
     }
-
-    single<ApiContract> { RandomUserDataRepository(get()) }
 }
 
 val userListViewModel = module {
