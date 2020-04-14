@@ -5,7 +5,7 @@ import com.robertoallende.randomuser.BuildConfig
 import com.robertoallende.randomuser.data.ApiContract
 import com.robertoallende.randomuser.data.ApiService
 import com.robertoallende.randomuser.data.RandomUserApi
-import com.robertoallende.randomuser.data.RandomUserDataRepository
+import com.robertoallende.randomuser.screens.user_detail.UserDetailViewModel
 import com.robertoallende.randomuser.screens.user_list.UserListViewModel
 import com.squareup.moshi.Moshi
 import okhttp3.Interceptor
@@ -19,7 +19,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 val allModules
-    get() = listOf(dataModule, userListViewModel)
+    get() = listOf(dataModule, userListViewModel, userDetailViewModel)
 
 val dataModule = module {
 
@@ -56,4 +56,8 @@ val dataModule = module {
 
 val userListViewModel = module {
     viewModel { UserListViewModel(get()) }
+}
+
+val userDetailViewModel = module {
+    viewModel { UserDetailViewModel(get()) }
 }
