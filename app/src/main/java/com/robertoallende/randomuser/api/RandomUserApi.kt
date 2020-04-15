@@ -1,7 +1,9 @@
-package com.robertoallende.randomuser.data
+package com.robertoallende.randomuser.api
 
 import com.robertoallende.randomuser.BuildConfig
-import com.robertoallende.randomuser.data.models.RandomUserResponse
+import com.robertoallende.randomuser.api.ApiContract
+import com.robertoallende.randomuser.api.ApiService
+import com.robertoallende.randomuser.model.RandomUserResponse
 
 class RandomUserApi(
     private val apiService: ApiService

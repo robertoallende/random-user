@@ -1,4 +1,4 @@
-package com.robertoallende.randomuser.screens.user_detail
+package com.robertoallende.randomuser.ui.user_detail
 
 import com.robertoallende.randomuser.base.BaseEvent
 

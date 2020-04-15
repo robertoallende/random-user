@@ -1,7 +1,7 @@
-package com.robertoallende.randomuser.screens.user_detail
+package com.robertoallende.randomuser.ui.user_detail
 
 import com.robertoallende.randomuser.base.BaseViewModel
-import com.robertoallende.randomuser.data.ApiContract
+import com.robertoallende.randomuser.api.ApiContract
 
 class UserDetailViewModel(
     private val dataRepository: ApiContract

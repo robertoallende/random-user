@@ -1,6 +1,6 @@
-package com.robertoallende.randomuser.data
+package com.robertoallende.randomuser.api
 
-import com.robertoallende.randomuser.data.models.RandomUserResponse
+import com.robertoallende.randomuser.model.RandomUserResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

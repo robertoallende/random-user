@@ -1,10 +1,10 @@
-package com.robertoallende.randomuser.data.models
+package com.robertoallende.randomuser.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Registered(
+data class Dob(
     @Json(name = "age")
     val age: Int?,
     @Json(name = "date")

@@ -1,4 +1,4 @@
-package com.robertoallende.randomuser.data
+package com.robertoallende.randomuser.api
 
 import com.robertoallende.randomuser.BuildConfig
 

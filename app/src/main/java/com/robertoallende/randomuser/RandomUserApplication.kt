@@ -1,4 +1,4 @@
-package com.robertoallende.randomuser.app
+package com.robertoallende.randomuser
 
 import android.app.Application
 import org.koin.android.ext.koin.androidContext

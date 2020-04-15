@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.robertoallende.randomuser.screens.user_detail.UserDetailViewModel" />
+            type="com.robertoallende.randomuser.ui.user_detail.UserDetailViewModel" />
 
     </data>
 

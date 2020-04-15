@@ -1,4 +1,4 @@
-package com.robertoallende.randomuser.screens.user_detail
+package com.robertoallende.randomuser.ui.user_detail
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil

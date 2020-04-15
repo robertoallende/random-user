@@ -1,12 +1,11 @@
-package com.robertoallende.randomuser.app
+package com.robertoallende.randomuser
 
 import com.readystatesoftware.chuck.ChuckInterceptor
-import com.robertoallende.randomuser.BuildConfig
-import com.robertoallende.randomuser.data.ApiContract
-import com.robertoallende.randomuser.data.ApiService
-import com.robertoallende.randomuser.data.RandomUserApi
-import com.robertoallende.randomuser.screens.user_detail.UserDetailViewModel
-import com.robertoallende.randomuser.screens.user_list.UserListViewModel
+import com.robertoallende.randomuser.api.ApiContract
+import com.robertoallende.randomuser.api.ApiService
+import com.robertoallende.randomuser.api.RandomUserApi
+import com.robertoallende.randomuser.ui.user_detail.UserDetailViewModel
+import com.robertoallende.randomuser.ui.user_list.UserListViewModel
 import com.squareup.moshi.Moshi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -19,7 +18,11 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 val allModules
-    get() = listOf(dataModule, userListViewModel, userDetailViewModel)
+    get() = listOf(
+        dataModule,
+        userListViewModel,
+        userDetailViewModel
+    )
 
 val dataModule = module {
 

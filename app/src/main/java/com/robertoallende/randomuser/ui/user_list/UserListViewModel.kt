@@ -1,12 +1,12 @@
-package com.robertoallende.randomuser.screens.user_list
+package com.robertoallende.randomuser.ui.user_list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.robertoallende.randomuser.base.BaseViewModel
-import com.robertoallende.randomuser.data.ApiContract
+import com.robertoallende.randomuser.api.ApiContract
 import androidx.lifecycle.viewModelScope
 import com.robertoallende.randomuser.common.map
-import com.robertoallende.randomuser.data.models.RandomUserResponse
+import com.robertoallende.randomuser.model.RandomUserResponse
 import kotlinx.coroutines.launch
 
 class UserListViewModel(
