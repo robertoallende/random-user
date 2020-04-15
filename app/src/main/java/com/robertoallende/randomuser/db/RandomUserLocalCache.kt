@@ -31,9 +31,9 @@ class RandomUserLocalCache(
      * any characters between the words.
      * @param name user name
      */
-//    fun usersByName(name: String): DataSource.Factory<Int, User> {
-//        // appending '%' so we can allow other characters to be before and after the query string
-//        val query = "%${name.replace(' ', '%')}%"
-//        // return userDao.usersByName(query)
-//    }
+    fun usersByName(name: String): DataSource.Factory<Int, User> {
+        // appending '%' so we can allow other characters to be before and after the query string
+        val query = "%${name.replace(' ', '%')}%"
+        return userDao.usersByName(query)
+    }
 }

@@ -7,9 +7,13 @@ import com.robertoallende.randomuser.model.RandomUserResponse
 
 class RandomUserRepository(
     private val service: ApiService,
-    private val cache: RandomUserLocalCache? ) {
+    private val cache: RandomUserLocalCache) {
 
     suspend fun getUsers(): RandomUserResponse {
-        return service.getNewsFeed(BuildConfig.API_SEED)
+        val response =  service.getNewsFeed(BuildConfig.API_SEED)
+        response.users?.let { cache.insert(it){
+
+        }}
+        return response
     }
 }

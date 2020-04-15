@@ -3,6 +3,8 @@ package com.robertoallende.randomuser
 import com.readystatesoftware.chuck.ChuckInterceptor
 import com.robertoallende.randomuser.api.ApiService
 import com.robertoallende.randomuser.data.RandomUserRepository
+import com.robertoallende.randomuser.db.RandomUserLocalCache
+import com.robertoallende.randomuser.db.UserDatabase
 import com.robertoallende.randomuser.ui.user_detail.UserDetailViewModel
 import com.robertoallende.randomuser.ui.user_list.UserListViewModel
 import com.squareup.moshi.Moshi
@@ -14,6 +16,7 @@ import org.koin.dsl.module
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
 val allModules
@@ -52,9 +55,9 @@ val dataModule = module {
 
     single<RandomUserRepository> {
         val retrofitApiService = get<Retrofit>().create(ApiService::class.java)
-//        val database = UserDatabase.getInstance(this.androidContext())
-//        val localCache = RandomUserLocalCache(database.userDao(), Executors.newSingleThreadExecutor())
-        RandomUserRepository(retrofitApiService, null)
+        val database = UserDatabase.getInstance(this.androidContext())
+        val localCache = RandomUserLocalCache(database.userDao(), Executors.newSingleThreadExecutor())
+        RandomUserRepository(retrofitApiService, localCache)
     }
 }
 
