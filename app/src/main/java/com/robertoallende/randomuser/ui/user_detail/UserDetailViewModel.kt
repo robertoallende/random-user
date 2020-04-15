@@ -1,10 +1,10 @@
 package com.robertoallende.randomuser.ui.user_detail
 
 import com.robertoallende.randomuser.base.BaseViewModel
-import com.robertoallende.randomuser.api.ApiContract
+import com.robertoallende.randomuser.data.RandomUserRepository
 
 class UserDetailViewModel(
-    private val dataRepository: ApiContract
+    private val repository: RandomUserRepository
 ) : BaseViewModel<UserDetailEvent>() {
 
 }

@@ -3,14 +3,14 @@ package com.robertoallende.randomuser.ui.user_list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.robertoallende.randomuser.base.BaseViewModel
-import com.robertoallende.randomuser.api.ApiContract
 import androidx.lifecycle.viewModelScope
 import com.robertoallende.randomuser.common.map
+import com.robertoallende.randomuser.data.RandomUserRepository
 import com.robertoallende.randomuser.model.RandomUserResponse
 import kotlinx.coroutines.launch
 
 class UserListViewModel(
-    private val dataRepository: ApiContract
+    private val repository: RandomUserRepository
 ) : BaseViewModel<UserListEvent>() {
 
     private val _randomUsers = MutableLiveData<RandomUserResponse>()
@@ -25,7 +25,7 @@ class UserListViewModel(
     init {
         viewModelScope.launch {
             // TODO: Check for potential excpetions
-            _randomUsers.postValue(dataRepository.getUsers())
+            _randomUsers.postValue(repository.getUsers())
         }
     }
 }

@@ -18,5 +18,4 @@ class UserListActivity() : BaseActivity<UserListEvent, UserListViewModel>() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
     }
-
 }
