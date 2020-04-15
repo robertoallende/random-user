@@ -11,9 +11,7 @@ class RandomUserRepository(
 
     suspend fun getUsers(): RandomUserResponse {
         val response =  service.getNewsFeed(BuildConfig.API_SEED)
-        response.users?.let { cache.insert(it){
-
-        }}
+        response.users?.let { cache.insert(it){}}
         return response
     }
 }
