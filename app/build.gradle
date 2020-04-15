@@ -68,6 +68,9 @@ ext {
     idling_resource_version = "3.2.0"
     livedata_testing_version = "1.1.0"
     lifecycle_version = "2.2.0"
+
+    room_version = "2.2.5"
+    paging_version = "2.1.2"
 }
 
 dependencies {
@@ -99,6 +102,10 @@ dependencies {
 
     debugImplementation "com.readystatesoftware.chuck:library:$chuck_version"
     releaseImplementation "com.readystatesoftware.chuck:library-no-op:$chuck_version"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     implementation "com.jakewharton.timber:timber:$timber_version"
     testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_version"

@@ -17,8 +17,8 @@ class UserListViewModel(
     val randomUsers: LiveData<RandomUserResponse> = _randomUsers
 
     val tempName: LiveData<String> = _randomUsers.map {
-        it.results?.let { results ->
-            if (results.isNotEmpty()) results[0].name.toString() else ""
+        it.users?.let { results ->
+            if (results.isNotEmpty()) results[0].email else ""
         } ?: ""
     }
 

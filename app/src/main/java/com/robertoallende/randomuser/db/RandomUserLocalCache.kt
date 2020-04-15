@@ -1,5 +1,39 @@
 package com.robertoallende.randomuser.db
 
-class RandomUserLocalCache {
+import androidx.paging.DataSource
+import com.robertoallende.randomuser.model.User
+import timber.log.Timber
+import java.util.concurrent.Executor
 
+/**
+ * Class that handles the DAO local data source. This ensures that methods are triggered on the
+ * correct executor.
+ */
+class RandomUserLocalCache(
+    private val userDao: UserDao,
+    private val ioExecutor: Executor
+) {
+
+    /**
+     * Insert a list of user in the database, on a background thread.
+     */
+    fun insert(users: List<User>, insertFinished: () -> Unit) {
+        ioExecutor.execute {
+            Timber.d("RandomUserLocalCache inserting ${users.size} users")
+            userDao.insert(users)
+            insertFinished()
+        }
+    }
+
+    /**
+     * Request a LiveData<List<User>> from the Dao, based on a user name. If the name contains
+     * multiple words separated by spaces, then we're emulating the GitHub API behavior and allow
+     * any characters between the words.
+     * @param name user name
+     */
+//    fun usersByName(name: String): DataSource.Factory<Int, User> {
+//        // appending '%' so we can allow other characters to be before and after the query string
+//        val query = "%${name.replace(' ', '%')}%"
+//        // return userDao.usersByName(query)
+//    }
 }
