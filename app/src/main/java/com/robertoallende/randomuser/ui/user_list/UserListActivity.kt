@@ -10,6 +10,7 @@ import com.robertoallende.randomuser.R
 import com.robertoallende.randomuser.base.BaseActivity
 import com.robertoallende.randomuser.databinding.ActivityUserListBinding
 import com.robertoallende.randomuser.model.User
+import com.robertoallende.randomuser.ui.user_detail.UserDetailActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -34,9 +35,19 @@ class UserListActivity : BaseActivity<UserListEvent, UserListViewModel>() {
             // showEmptyList(it?.size == 0)
             adapter.submitList(it)
         })
+
+        viewModel.events.observe(this, Observer {
+            when (it) {
+                is UserListEvent.GoToUserDetail -> openUserDetail(it.user)
+            }
+        })
     }
 
     private fun onUserClicked(user: User) {
+        viewModel.onUserClicked(user)
+    }
 
+    private fun openUserDetail(user: User) {
+        startActivity(UserDetailActivity.getIntent(this, user))
     }
 }

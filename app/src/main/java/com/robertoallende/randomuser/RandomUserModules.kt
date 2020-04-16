@@ -6,6 +6,7 @@ import com.robertoallende.randomuser.api.RandomUserService
 import com.robertoallende.randomuser.data.RandomUserRepository
 import com.robertoallende.randomuser.db.RandomUserLocalCache
 import com.robertoallende.randomuser.db.UserDatabase
+import com.robertoallende.randomuser.model.User
 import com.robertoallende.randomuser.ui.user_detail.UserDetailViewModel
 import com.robertoallende.randomuser.ui.user_list.UserListViewModel
 import com.squareup.moshi.Moshi
@@ -69,5 +70,7 @@ val userListViewModel = module {
 }
 
 val userDetailViewModel = module {
-    viewModel { UserDetailViewModel(get()) }
+    viewModel { (user: User) ->
+        UserDetailViewModel(user, get())
+    }
 }

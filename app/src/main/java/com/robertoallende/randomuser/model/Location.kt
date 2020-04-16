@@ -1,12 +1,15 @@
 package com.robertoallende.randomuser.model
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = Location.TABLE)
 @JsonClass(generateAdapter = true)
 data class Location(
@@ -41,7 +44,7 @@ data class Location(
     @Embedded
     @Json(name = "timezone")
     val timezone: Timezone?
-) {
+) : Parcelable {
 
     companion object {
         const val TABLE = "LocationEntity"

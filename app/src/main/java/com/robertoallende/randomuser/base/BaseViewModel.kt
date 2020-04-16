@@ -11,4 +11,11 @@ abstract class BaseViewModel<T : BaseEvent> : ViewModel(), KoinComponent {
     val events: LiveData<T>
         get() = _events
 
+    protected fun postEvent(event: T?, sync: Boolean = false) {
+        if (sync) {
+            _events.value = event
+        } else {
+            _events.postValue(event)
+        }
+    }
 }

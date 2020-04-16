@@ -1,9 +1,12 @@
 package com.robertoallende.randomuser.model
 
+import android.os.Parcelable
 import androidx.room.*
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = User.TABLE)
 @JsonClass(generateAdapter = true)
 data class User(
@@ -58,7 +61,7 @@ data class User(
     @Embedded
     @Json(name = "registered")
     var registered: Registered?
-) {
+) : Parcelable {
 
     fun genderCapitalized() = gender?.capitalize() ?: ""
 

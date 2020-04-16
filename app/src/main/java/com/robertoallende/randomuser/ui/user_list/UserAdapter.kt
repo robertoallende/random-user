@@ -43,7 +43,7 @@ class UserAdapter(private val onItemClicked: (User) -> Unit) :
 
         fun bind(item: User) {
             binding.user = item
-            binding.tvFullName.setOnClickListener {
+            binding.clItem.setOnClickListener {
                 onItemClicked(item)
             }
         }

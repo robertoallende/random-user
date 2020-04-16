@@ -15,8 +15,11 @@ import kotlinx.coroutines.launch
 class UserListViewModel(
     private val repository: RandomUserRepository
 ) : BaseViewModel<UserListEvent>() {
-
     private val _randomUsers = repository.getUsers(viewModelScope)
     val randomUsers: LiveData<PagedList<User>> = _randomUsers
+
+    fun onUserClicked(user: User) {
+        postEvent(UserListEvent.GoToUserDetail(user))
+    }
 
 }
