@@ -19,4 +19,7 @@ interface UserDao {
     // TODO: Change email by name and order by name
     @Query("SELECT * FROM ${User.TABLE} WHERE (email LIKE :queryString) ORDER BY userId ASC")
     fun usersByName(queryString: String): DataSource.Factory<Int, User>
+
+    @Query("SELECT * FROM ${User.TABLE} ORDER BY userId ASC")
+    fun allUsers(): DataSource.Factory<Int, User>
 }

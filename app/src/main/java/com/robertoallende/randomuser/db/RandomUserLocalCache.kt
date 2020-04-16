@@ -36,4 +36,14 @@ class RandomUserLocalCache(
         val query = "%${name.replace(' ', '%')}%"
         return userDao.usersByName(query)
     }
+
+    /**
+     * Request a LiveData<List<User>> from the Dao, based on a user name. If the name contains
+     * multiple words separated by spaces, then we're emulating the GitHub API behavior and allow
+     * any characters between the words.
+     * @param name user name
+     */
+    fun allUsers(): DataSource.Factory<Int, User> {
+        return userDao.allUsers()
+    }
 }

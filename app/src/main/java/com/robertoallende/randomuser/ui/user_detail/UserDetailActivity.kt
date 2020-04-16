@@ -7,7 +7,7 @@ import com.robertoallende.randomuser.base.BaseActivity
 import com.robertoallende.randomuser.databinding.ActivityUserDetailBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class UserDetailActivity: BaseActivity<UserDetailEvent, UserDetailViewModel>() {
+class UserDetailActivity : BaseActivity<UserDetailEvent, UserDetailViewModel>() {
 
     private lateinit var binding: ActivityUserDetailBinding
     override val viewModel: UserDetailViewModel by viewModel()

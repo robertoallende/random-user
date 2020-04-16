@@ -23,7 +23,10 @@ data class Name(
 
     @ColumnInfo(name = "title")
     @Json(name = "title")
-    var title: String?) {
+    var title: String?
+) {
+
+    fun fullName(): String = "$title $first $last"
 
     companion object {
         const val TABLE = "NameEntity"

@@ -7,6 +7,10 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET(RandomUserApiEndPoints.GET_USERS)
-    suspend fun getNewsFeed(@Query("seed") seed: String): RandomUserResponse
+    suspend fun getUsers(
+        @Query("seed") seed: String,
+        @Query("page") page: Int,
+        @Query("results") results: Int
+    ): RandomUserResponse
 
 }

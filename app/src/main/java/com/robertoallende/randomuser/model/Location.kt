@@ -28,7 +28,7 @@ data class Location(
 
     @ColumnInfo(name = "postcode")
     @Json(name = "postcode")
-    val postcode: Int?,
+    val postcode: String?,
 
     @ColumnInfo(name = "state")
     @Json(name = "state")

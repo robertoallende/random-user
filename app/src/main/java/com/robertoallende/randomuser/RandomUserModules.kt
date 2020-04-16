@@ -2,6 +2,7 @@ package com.robertoallende.randomuser
 
 import com.readystatesoftware.chuck.ChuckInterceptor
 import com.robertoallende.randomuser.api.ApiService
+import com.robertoallende.randomuser.api.RandomUserService
 import com.robertoallende.randomuser.data.RandomUserRepository
 import com.robertoallende.randomuser.db.RandomUserLocalCache
 import com.robertoallende.randomuser.db.UserDatabase
@@ -56,8 +57,10 @@ val dataModule = module {
     single<RandomUserRepository> {
         val retrofitApiService = get<Retrofit>().create(ApiService::class.java)
         val database = UserDatabase.getInstance(this.androidContext())
-        val localCache = RandomUserLocalCache(database.userDao(), Executors.newSingleThreadExecutor())
-        RandomUserRepository(retrofitApiService, localCache)
+        val localCache =
+            RandomUserLocalCache(database.userDao(), Executors.newSingleThreadExecutor())
+        val randomUserService = RandomUserService(retrofitApiService)
+        RandomUserRepository(randomUserService, localCache)
     }
 }
 

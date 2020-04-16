@@ -21,7 +21,7 @@ data class Street(
     @Json(name = "number")
     val number: Int?
 
-){
+) {
 
     companion object {
         const val TABLE = "StreetEntity"
