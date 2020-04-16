@@ -58,8 +58,9 @@ data class User(
     @Embedded
     @Json(name = "registered")
     var registered: Registered?
-
 ) {
+
+    fun genderCapitalized() = gender?.capitalize() ?: ""
 
     companion object {
         const val TABLE = "UserEntity"
