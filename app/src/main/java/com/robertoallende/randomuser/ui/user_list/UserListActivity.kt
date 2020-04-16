@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.robertoallende.randomuser.R
 import com.robertoallende.randomuser.base.BaseActivity
 import com.robertoallende.randomuser.databinding.ActivityUserListBinding
@@ -25,6 +26,9 @@ class UserListActivity : BaseActivity<UserListEvent, UserListViewModel>() {
         binding.lifecycleOwner = this
 
         binding.rvUserList.adapter = adapter
+        val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        binding.rvUserList.addItemDecoration(decoration)
+
         viewModel.randomUsers.observe(this, Observer<PagedList<User>> {
             Timber.d("Activity list: ${it?.size}")
             // showEmptyList(it?.size == 0)
