@@ -44,7 +44,7 @@ When the user scrolls, the PagedList requests that the DataSource load more data
 
 - Exception handling: if the API raises an exception the app will crash because exeptions are not handled at the moment.
 
-- User Search: the query has been implemented but not exposed to the API
+- User Search: the query has been implemented but not exposed to the UI
 
 - API Mocking: I would use MockWebServer to mock API responses.
 
