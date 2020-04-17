@@ -46,6 +46,8 @@ data class Location(
     val timezone: Timezone?
 ) : Parcelable {
 
+    fun fullAddress() = "${street?.number} ${street?.name}, $city, $country"
+
     companion object {
         const val TABLE = "LocationEntity"
     }
