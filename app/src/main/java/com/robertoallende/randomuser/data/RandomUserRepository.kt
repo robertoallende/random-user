@@ -30,6 +30,8 @@ class RandomUserRepository(
         // The BoundaryCallback will observe when the user reaches to the edges of
         // the list and update the database with extra data
         val boundaryCallback = UsersBoundaryCallback("", service, cache, viewModelScope)
+
+        // TODO: Expose network errors and handle them
         val networkErrors = boundaryCallback.networkErrors
 
         // Get the paged list

@@ -38,7 +38,7 @@ class UserListActivity : BaseActivity<UserListEvent, UserListViewModel>() {
 
         viewModel.randomUsers.observe(this, Observer<PagedList<User>> {
             Timber.d("Activity list: ${it?.size}")
-            // showEmptyList(it?.size == 0)
+            // TODO: Consider empty case
             adapter.submitList(it)
         })
 
