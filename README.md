@@ -6,7 +6,7 @@ An Android Client that fetches data from randomuser.me
 The App has been implemented using Kotlin, Dependency injection with Koin and following MVVM
 and has offline support by using Room and JetPaq's Pagination library.
 
-Following Android Documentation, the flow is the following.
+Following Android Documentation, the implemented flow is described below.
 
 The DataSource.Factory (implemented by Room) creates the DataSource. Then, LivePagedListBuilder builds
 the LiveData<PagedList>, using the passed-in DataSource.Factory, BoundaryCallback, and PagedList configuration.
