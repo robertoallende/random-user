@@ -24,6 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:loadUrlCircleCrop="@{user.picture.thumbnail}"
+            android:transitionName="@string/avatar_transition"
             />
 
         <TextView
@@ -37,6 +38,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_avatar"
             app:layout_constraintTop_toTopOf="parent"
+            android:transitionName="@string/name_transition"
             tools:text="Mickey Mouse" />
 
         <TextView

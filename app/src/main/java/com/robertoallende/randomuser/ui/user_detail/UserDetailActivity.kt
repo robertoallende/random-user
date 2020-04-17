@@ -2,6 +2,7 @@ package com.robertoallende.randomuser.ui.user_detail
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.robertoallende.randomuser.R
@@ -23,6 +24,8 @@ class UserDetailActivity : BaseActivity<UserDetailEvent, UserDetailViewModel>() 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_user_detail)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        enableFadeTransition()
     }
 
     companion object {

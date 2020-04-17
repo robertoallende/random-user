@@ -15,14 +15,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.user.name.fullName()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="@dimen/imagen_avatar_big"
+            android:layout_height="@dimen/imagen_avatar_big"
+            android:layout_margin="@dimen/spacing_20dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:loadUrlCircleCrop="@{viewModel.user.picture.large}"
+            android:transitionName="@string/avatar_transition"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_20dp"
+            style="@style/Detail.Title"
+            android:text="@{viewModel.user.name.fullName()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_avatar"
+            android:transitionName="@string/name_transition"
             tools:text="Mickey Mouse" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

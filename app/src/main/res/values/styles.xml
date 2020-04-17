@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -27,5 +29,15 @@
         <item name="android:textSize">@dimen/text_14sp</item>
     </style>
 
+    <style name="Detail">
+    </style>
+
+    <style name="Detail.Title">
+        <item name="android:textSize">@dimen/text_24sp</item>
+    </style>
+
+    <style name="Detail.Body">
+        <item name="android:textSize">@dimen/text_16sp</item>
+    </style>
 
 </resources>

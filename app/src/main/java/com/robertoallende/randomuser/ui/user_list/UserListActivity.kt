@@ -1,7 +1,12 @@
 package com.robertoallende.randomuser.ui.user_list
 
+import android.content.res.Resources
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
@@ -13,6 +18,7 @@ import com.robertoallende.randomuser.model.User
 import com.robertoallende.randomuser.ui.user_detail.UserDetailActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
+
 
 class UserListActivity : BaseActivity<UserListEvent, UserListViewModel>() {
 
@@ -38,16 +44,21 @@ class UserListActivity : BaseActivity<UserListEvent, UserListViewModel>() {
 
         viewModel.events.observe(this, Observer {
             when (it) {
-                is UserListEvent.GoToUserDetail -> openUserDetail(it.user)
+                is UserListEvent.GoToUserDetail -> openUserDetail(it.user, it.iv)
             }
         })
+
+        enableFadeTransition()
     }
 
-    private fun onUserClicked(user: User) {
-        viewModel.onUserClicked(user)
+    private fun onUserClicked(user: User, iv: ImageView) {
+        viewModel.onUserClicked(user, iv)
     }
 
-    private fun openUserDetail(user: User) {
-        startActivity(UserDetailActivity.getIntent(this, user))
+    private fun openUserDetail(user: User, iv: ImageView) {
+        val newIntent =  UserDetailActivity.getIntent(this, user)
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+            Pair(iv, getString(R.string.avatar_transition)))
+        startActivity(newIntent, options.toBundle())
     }
 }

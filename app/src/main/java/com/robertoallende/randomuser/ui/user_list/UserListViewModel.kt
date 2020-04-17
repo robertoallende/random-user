@@ -1,5 +1,7 @@
 package com.robertoallende.randomuser.ui.user_list
 
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.robertoallende.randomuser.base.BaseViewModel
@@ -18,8 +20,8 @@ class UserListViewModel(
     private val _randomUsers = repository.getUsers(viewModelScope)
     val randomUsers: LiveData<PagedList<User>> = _randomUsers
 
-    fun onUserClicked(user: User) {
-        postEvent(UserListEvent.GoToUserDetail(user))
+    fun onUserClicked(user: User, iv: ImageView) {
+        postEvent(UserListEvent.GoToUserDetail(user, iv))
     }
 
 }
