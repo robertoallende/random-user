@@ -6,5 +6,5 @@ import com.robertoallende.randomuser.base.BaseEvent
 import com.robertoallende.randomuser.model.User
 
 sealed class UserListEvent : BaseEvent {
-    class GoToUserDetail(val user: User, val iv: ImageView) : UserListEvent()
+    class GoToUserDetail(val user: User, val position: Int) : UserListEvent()
 }

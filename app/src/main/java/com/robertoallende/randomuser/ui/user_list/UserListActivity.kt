@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
@@ -16,6 +17,7 @@ import com.robertoallende.randomuser.base.BaseActivity
 import com.robertoallende.randomuser.databinding.ActivityUserListBinding
 import com.robertoallende.randomuser.model.User
 import com.robertoallende.randomuser.ui.user_detail.UserDetailActivity
+import kotlinx.android.synthetic.main.item_user.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -44,21 +46,27 @@ class UserListActivity : BaseActivity<UserListEvent, UserListViewModel>() {
 
         viewModel.events.observe(this, Observer {
             when (it) {
-                is UserListEvent.GoToUserDetail -> openUserDetail(it.user, it.iv)
+                is UserListEvent.GoToUserDetail -> openUserDetail(it.user, it.position)
             }
         })
 
         enableFadeTransition()
     }
 
-    private fun onUserClicked(user: User, iv: ImageView) {
-        viewModel.onUserClicked(user, iv)
+    private fun onUserClicked(user: User, position: Int) {
+        viewModel.onUserClicked(user, position)
     }
 
-    private fun openUserDetail(user: User, iv: ImageView) {
-        val newIntent =  UserDetailActivity.getIntent(this, user)
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
-            Pair(iv, getString(R.string.avatar_transition)))
-        startActivity(newIntent, options.toBundle())
+    private fun openUserDetail(user: User, position: Int) {
+        val newIntent = UserDetailActivity.getIntent(this, user)
+        val view =
+            binding.rvUserList.findViewHolderForAdapterPosition(position)?.itemView?.iv_avatar
+        view?.let {
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this,
+                Pair(view, getString(R.string.avatar_transition))
+            )
+            startActivity(newIntent, options.toBundle())
+        } ?: startActivity(newIntent)
     }
 }
