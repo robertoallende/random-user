@@ -20,8 +20,8 @@ class UserListViewModel(
     private val _randomUsers = repository.getUsers(viewModelScope)
     val randomUsers: LiveData<PagedList<User>> = _randomUsers
 
-    fun onUserClicked(user: User, iv: ImageView) {
-        postEvent(UserListEvent.GoToUserDetail(user, iv))
+    fun onUserClicked(user: User, position: Int) {
+        postEvent(UserListEvent.GoToUserDetail(user, position))
     }
 
 }

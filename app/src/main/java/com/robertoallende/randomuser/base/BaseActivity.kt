@@ -10,7 +10,7 @@ abstract class BaseActivity<E : BaseEvent, VM : BaseViewModel<E>> : AppCompatAct
 
     abstract val viewModel: VM
 
-    fun enableFadeTransition(){
+    fun enableFadeTransition() {
         val fade = Fade()
 
         val itemsToExclude = listOf(

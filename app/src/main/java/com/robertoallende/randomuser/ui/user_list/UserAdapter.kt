@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.robertoallende.randomuser.databinding.ItemUserBinding
 import com.robertoallende.randomuser.model.User
 
-class UserAdapter(private val onItemClicked: (User, ImageView) -> Unit) :
+class UserAdapter(private val onItemClicked: (User, Int) -> Unit) :
     PagedListAdapter<User, RecyclerView.ViewHolder>(USER_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -41,13 +41,13 @@ class UserAdapter(private val onItemClicked: (User, ImageView) -> Unit) :
 
     class UserViewHolder(
         private val binding: ItemUserBinding,
-        private val onItemClicked: (User, ImageView) -> Unit
+        private val onItemClicked: (User, Int) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: User) {
             binding.user = item
             binding.clItem.setOnClickListener {
-                onItemClicked(item, binding.ivAvatar)
+                onItemClicked(item, adapterPosition)
             }
         }
     }
