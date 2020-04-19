@@ -32,7 +32,7 @@ data class Dob(
         val humanFormat = SimpleDateFormat("MMM dd, yyyy", Locale.US)
 
         return try {
-            humanFormat.format(apiIsoFormat.parse(date))
+            apiIsoFormat.parse(date)?.let { humanFormat.format(it) } ?: ""
         } catch (e: ParseException) {
             Timber.e("Dob.asString() Error parsing $date")
             ""
