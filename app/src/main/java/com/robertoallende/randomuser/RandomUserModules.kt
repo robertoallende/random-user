@@ -30,6 +30,8 @@ val allModules
 
 val dataModule = module {
 
+    single<RadomUserIdlingResource> { SimpleRandomUserIdlingResource() }
+
     single<Converter.Factory> { MoshiConverterFactory.create() }
 
     single<Interceptor> { ChuckInterceptor(androidContext()) }
@@ -55,13 +57,15 @@ val dataModule = module {
         Moshi.Builder().build()
     }
 
+    single<UserDatabase> {
+        UserDatabase.getInstance(androidContext())
+    }
+
     single<RandomUserRepository> {
         val retrofitApiService = get<Retrofit>().create(ApiService::class.java)
-        val database = UserDatabase.getInstance(this.androidContext())
-        val localCache =
-            RandomUserLocalCache(database.userDao(), Executors.newSingleThreadExecutor())
+        val localCache = RandomUserLocalCache(get(), Executors.newSingleThreadExecutor())
         val randomUserService = RandomUserService(retrofitApiService)
-        RandomUserRepository(randomUserService, localCache)
+        RandomUserRepository(randomUserService, localCache, get())
     }
 }
 

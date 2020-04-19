@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import com.robertoallende.randomuser.RadomUserIdlingResource
 import com.robertoallende.randomuser.api.RandomUserService
 import com.robertoallende.randomuser.db.RandomUserLocalCache
 import com.robertoallende.randomuser.model.User
@@ -12,7 +13,8 @@ import kotlinx.coroutines.CoroutineScope
 
 class RandomUserRepository(
     private val service: RandomUserService,
-    private val cache: RandomUserLocalCache
+    private val cache: RandomUserLocalCache,
+    private val idlingResource: RadomUserIdlingResource
 ) {
 
     /**
@@ -25,9 +27,8 @@ class RandomUserRepository(
         // every new query creates a new BoundaryCallback
         // The BoundaryCallback will observe when the user reaches to the edges of
         // the list and update the database with extra data
-        val boundaryCallback = UsersBoundaryCallback("", service, cache, viewModelScope)
+        val boundaryCallback = UsersBoundaryCallback("", service, cache, viewModelScope, idlingResource)
 
-        // TODO: Expose network errors and handle them
         val networkErrors = boundaryCallback.networkErrors
 
         // Get the paged list
