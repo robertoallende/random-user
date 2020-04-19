@@ -2,7 +2,7 @@
 [![codecov.io](https://codecov.io/gh/robertoallende/random-user/commit/21ba8bf472896b06b6c7b9fc280b50c82384dd2a/graphs/badge.svg?branch=develop)](
 https://codecov.io/gh/robertoallende/random-user/commit/21ba8bf472896b06b6c7b9fc280b50c82384dd2a?branch=develop)
 
-An Android Client that fetches and display data from randomuser.me.
+An Android Client that fetches and displays data from randomuser.me.
 
 ## Demo Video
 
