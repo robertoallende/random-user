@@ -33,7 +33,6 @@ class UserListViewModelTest : RandomUserKoinTest() {
     @get:Rule
     val rule: TestRule = InstantTaskExecutorRule()
 
-
     @Before
     fun beforeTest() {
         val repositoryMock = mock(RandomUserRepository::class.java)
