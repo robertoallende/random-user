@@ -9,20 +9,17 @@ import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = Street.TABLE)
+@Entity(tableName = Street.TABLE, primaryKeys = ["name", "number"])
 @JsonClass(generateAdapter = true)
 data class Street(
 
-    @PrimaryKey(autoGenerate = true)
-    var streetId: Long?,
-
     @ColumnInfo(name = "name")
     @Json(name = "name")
-    val name: String?,
+    val name: String,
 
     @ColumnInfo(name = "number")
     @Json(name = "number")
-    val number: Int?
+    val number: Int
 
 ) : Parcelable {
 

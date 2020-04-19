@@ -9,20 +9,17 @@ import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = Coordinates.TABLE)
+@Entity(tableName = Coordinates.TABLE, primaryKeys = ["latitude", "longitude"])
 @JsonClass(generateAdapter = true)
 data class Coordinates(
 
-    @PrimaryKey(autoGenerate = true)
-    var coordinatesId: Long?,
-
     @ColumnInfo(name = "latitude")
     @Json(name = "latitude")
-    val latitude: String?,
+    val latitude: String,
 
     @ColumnInfo(name = "longitude")
     @Json(name = "longitude")
-    val longitude: String?
+    val longitude: String
 ) : Parcelable {
 
     companion object {

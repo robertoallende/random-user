@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.core.view.get
@@ -39,18 +40,26 @@ class UserListActivity : BaseActivity<UserListEvent, UserListViewModel>() {
         binding.rvUserList.addItemDecoration(decoration)
 
         viewModel.randomUsers.observe(this, Observer<PagedList<User>> {
-            Timber.d("Activity list: ${it?.size}")
-            // TODO: Consider empty case
             adapter.submitList(it)
+            viewModel.onRandomUsersUpdated()
+        })
+
+        viewModel.networkError.observe(this, Observer<String> {
+            viewModel.onNetworkError(it)
         })
 
         viewModel.events.observe(this, Observer {
             when (it) {
                 is UserListEvent.GoToUserDetail -> openUserDetail(it.user, it.position)
+                is UserListEvent.DisplayError -> displayError(it.message)
             }
         })
 
         enableFadeTransition()
+    }
+
+    private fun displayError(message: String) {
+        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
     }
 
     private fun onUserClicked(user: User, position: Int) {

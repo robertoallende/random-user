@@ -13,16 +13,14 @@ import kotlinx.android.parcel.Parcelize
 @JsonClass(generateAdapter = true)
 data class Timezone(
 
-    @PrimaryKey(autoGenerate = true)
-    var timezoneId: Long?,
-
     @ColumnInfo(name = "description")
     @Json(name = "description")
     val description: String?,
 
+    @PrimaryKey
     @ColumnInfo(name = "offset")
     @Json(name = "offset")
-    val offset: String?
+    val offset: String
 
 ) : Parcelable {
     companion object {

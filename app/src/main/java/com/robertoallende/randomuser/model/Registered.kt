@@ -13,16 +13,14 @@ import kotlinx.android.parcel.Parcelize
 @JsonClass(generateAdapter = true)
 data class Registered(
 
-    @PrimaryKey(autoGenerate = true)
-    var registeredId: Long?,
-
     @Json(name = "age")
     @ColumnInfo(name = "registered_age")
     val age: Int?,
 
+    @PrimaryKey
     @Json(name = "date")
     @ColumnInfo(name = "registered_date")
-    val date: String?
+    val date: String
 
 ) : Parcelable {
     companion object {

@@ -23,6 +23,7 @@ data class Id(
     @ColumnInfo(name = "value")
     @Json(name = "value")
     val value: String?
+
 ) : Parcelable {
     companion object {
         const val TABLE = "IdEntity"

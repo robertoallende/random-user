@@ -9,20 +9,17 @@ import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = Name.TABLE)
+@Entity(tableName = Name.TABLE, primaryKeys = ["first", "last"])
 @JsonClass(generateAdapter = true)
 data class Name(
 
-    @PrimaryKey(autoGenerate = true)
-    var nameId: Long?,
-
     @ColumnInfo(name = "first")
     @Json(name = "first")
-    var first: String?,
+    var first: String,
 
     @ColumnInfo(name = "last")
     @Json(name = "last")
-    var last: String?,
+    var last: String,
 
     @ColumnInfo(name = "title")
     @Json(name = "title")

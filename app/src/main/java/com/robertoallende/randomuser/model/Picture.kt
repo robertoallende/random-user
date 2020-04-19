@@ -9,16 +9,13 @@ import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = Picture.TABLE)
+@Entity(tableName = Picture.TABLE, primaryKeys = ["large", "thumbnail"])
 @JsonClass(generateAdapter = true)
 data class Picture(
 
-    @PrimaryKey(autoGenerate = true)
-    var pictureId: Long?,
-
     @ColumnInfo(name = "large")
     @Json(name = "large")
-    val large: String?,
+    val large: String,
 
     @ColumnInfo(name = "medium")
     @Json(name = "medium")
@@ -26,7 +23,7 @@ data class Picture(
 
     @ColumnInfo(name = "thumbnail")
     @Json(name = "thumbnail")
-    val thumbnail: String?
+    val thumbnail: String
 ) : Parcelable {
     companion object {
         const val TABLE = "PictureEntity"
