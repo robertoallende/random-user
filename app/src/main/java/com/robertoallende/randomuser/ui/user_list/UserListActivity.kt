@@ -41,7 +41,6 @@ class UserListActivity : BaseActivity<UserListEvent, UserListViewModel>() {
 
         viewModel.randomUsers?.observe(this, Observer<PagedList<User>> {
             adapter.submitList(it)
-            viewModel.onRandomUsersUpdated()
         })
 
         viewModel.networkError?.observe(this, Observer<String> {
