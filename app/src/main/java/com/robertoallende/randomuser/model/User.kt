@@ -7,16 +7,12 @@ import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = User.TABLE)
+@Entity(tableName = User.TABLE, primaryKeys = ["email", "phone"])
 @JsonClass(generateAdapter = true)
 data class User(
-
-    @PrimaryKey(autoGenerate = true)
-    var userId: Long?,
-
     @ColumnInfo(name = "cell")
     @Json(name = "cell")
-    var cell: String?,
+    var cell: String,
 
     @Embedded
     @Json(name = "dob")
@@ -24,7 +20,7 @@ data class User(
 
     @ColumnInfo(name = "email")
     @Json(name = "email")
-    var email: String?,
+    var email: String,
 
     @ColumnInfo(name = "gender")
     @Json(name = "gender")
@@ -52,7 +48,7 @@ data class User(
 
     @ColumnInfo(name = "phone")
     @Json(name = "phone")
-    var phone: String?,
+    var phone: String,
 
     @Embedded
     @Json(name = "picture")

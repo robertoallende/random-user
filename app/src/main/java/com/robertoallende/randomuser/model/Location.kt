@@ -10,16 +10,13 @@ import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = Location.TABLE)
+@Entity(tableName = Location.TABLE, primaryKeys = ["postcode", "city", "country"])
 @JsonClass(generateAdapter = true)
 data class Location(
 
-    @PrimaryKey(autoGenerate = true)
-    var locationId: Long?,
-
     @ColumnInfo(name = "city")
     @Json(name = "city")
-    val city: String?,
+    val city: String,
 
     @Embedded
     @Json(name = "coordinates")
@@ -27,19 +24,19 @@ data class Location(
 
     @ColumnInfo(name = "country")
     @Json(name = "country")
-    val country: String?,
+    val country: String,
 
     @ColumnInfo(name = "postcode")
     @Json(name = "postcode")
-    val postcode: String?,
+    val postcode: String,
 
     @ColumnInfo(name = "state")
     @Json(name = "state")
-    val state: String?,
+    val state: String,
 
     @Embedded
     @Json(name = "street")
-    val street: Street?,
+    val street: Street,
 
     @Embedded
     @Json(name = "timezone")

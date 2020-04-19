@@ -15,16 +15,14 @@ import java.util.*
 @JsonClass(generateAdapter = true)
 data class Dob(
 
-    @PrimaryKey(autoGenerate = true)
-    var dobId: Long?,
-
     @ColumnInfo(name = "age")
     @Json(name = "age")
     val age: Int?,
 
+    @PrimaryKey
     @ColumnInfo(name = "date")
     @Json(name = "date")
-    val date: String?
+    val date: String
 ) : Parcelable {
 
     fun asString(): String {

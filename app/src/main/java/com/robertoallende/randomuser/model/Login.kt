@@ -13,9 +13,6 @@ import kotlinx.android.parcel.Parcelize
 @JsonClass(generateAdapter = true)
 data class Login(
 
-    @PrimaryKey(autoGenerate = true)
-    var loginId: Long?,
-
     @ColumnInfo(name = "md5")
     @Json(name = "md5")
     val md5: String?,
@@ -32,9 +29,10 @@ data class Login(
     @Json(name = "sha1")
     val sha1: String?,
 
+    @PrimaryKey
     @ColumnInfo(name = "sha256")
     @Json(name = "sha256")
-    val sha256: String?,
+    val sha256: String,
 
     @ColumnInfo(name = "username")
     @Json(name = "username")
