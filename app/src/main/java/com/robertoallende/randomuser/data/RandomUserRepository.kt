@@ -1,11 +1,13 @@
 package com.robertoallende.randomuser.data
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.robertoallende.randomuser.api.RandomUserService
 import com.robertoallende.randomuser.db.RandomUserLocalCache
 import com.robertoallende.randomuser.model.User
+import com.robertoallende.randomuser.model.UserSearchResult
 import kotlinx.coroutines.CoroutineScope
 
 class RandomUserRepository(
@@ -13,16 +15,10 @@ class RandomUserRepository(
     private val cache: RandomUserLocalCache
 ) {
 
-//    suspend fun getUsers(): List<User> {
-//        val response = service.getNewsFeed(BuildConfig.API_SEED, 1, 100)
-//        response.users?.let { cache.insert(it) {} }
-//        return response.users ?: listOf()
-//    }
-
     /**
      * Get all Users
      */
-    fun getUsers(viewModelScope: CoroutineScope): LiveData<PagedList<User>> {
+    fun getUsers(viewModelScope: CoroutineScope): UserSearchResult {
         // Get data source factory from the local cache
         val dataSourceFactory = cache.allUsers()
 
@@ -35,9 +31,11 @@ class RandomUserRepository(
         val networkErrors = boundaryCallback.networkErrors
 
         // Get the paged list
-        return LivePagedListBuilder(dataSourceFactory, DATABASE_PAGE_SIZE)
-            .setBoundaryCallback(boundaryCallback)
-            .build()
+        return UserSearchResult(
+            LivePagedListBuilder(dataSourceFactory, DATABASE_PAGE_SIZE)
+                .setBoundaryCallback(boundaryCallback)
+                .build(), networkErrors
+        )
     }
 
     companion object {

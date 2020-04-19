@@ -14,7 +14,7 @@ import kotlinx.android.parcel.Parcelize
 data class Id(
 
     @PrimaryKey(autoGenerate = true)
-    var idId : Long?,
+    var idId: Long?,
 
     @ColumnInfo(name = "id_name")
     @Json(name = "name")

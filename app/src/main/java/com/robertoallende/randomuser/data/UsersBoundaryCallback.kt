@@ -54,14 +54,17 @@ class UsersBoundaryCallback(
     }
 
     private suspend fun requestAndSaveData(query: String) {
-        // TODO Add Exception
-
-        if (isRequestInProgress) return
-        isRequestInProgress = true
-        val users = service.searchUsers(lastRequestedPage, NETWORK_PAGE_SIZE)
-        cache.insert(users) {
-            lastRequestedPage++
-            isRequestInProgress = false
+        try {
+            if (isRequestInProgress) return
+            isRequestInProgress = true
+            val users = service.searchUsers(lastRequestedPage, NETWORK_PAGE_SIZE)
+            cache.insert(users) {
+                lastRequestedPage++
+                isRequestInProgress = false
+            }
+        } catch (e: Exception) {
+            Timber.e("UsersBoundaryCallback.requestAndSaveData: ${e.message}")
+            _networkErrors.postValue(e.message)
         }
     }
 

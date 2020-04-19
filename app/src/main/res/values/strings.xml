@@ -5,4 +5,5 @@
 
     <string name="avatar_transition" translatable="false">avatar_tansition</string>
     <string name="name_transition" translatable="false">name_tansition</string>
+    <string name="empty_result">No users found.</string>
 </resources>
