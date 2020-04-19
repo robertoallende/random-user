@@ -53,3 +53,5 @@ When the user scrolls, the PagedList requests that the DataSource load more data
 
 - Enable code test coverage with JaCoCo
 
+- Add Swipe to Refresh or make UserListViewModel aware of connection status to automatically update user lists, in particular for the empty result case.
+
