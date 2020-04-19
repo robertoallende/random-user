@@ -39,12 +39,12 @@ class UserListActivity : BaseActivity<UserListEvent, UserListViewModel>() {
         val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         binding.rvUserList.addItemDecoration(decoration)
 
-        viewModel.randomUsers.observe(this, Observer<PagedList<User>> {
+        viewModel.randomUsers?.observe(this, Observer<PagedList<User>> {
             adapter.submitList(it)
             viewModel.onRandomUsersUpdated()
         })
 
-        viewModel.networkError.observe(this, Observer<String> {
+        viewModel.networkError?.observe(this, Observer<String> {
             viewModel.onNetworkError(it)
         })
 

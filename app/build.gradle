@@ -2,7 +2,21 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'jacoco-android'
 
+jacoco {
+    toolVersion = "0.8.4"
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+}
+
+jacocoAndroidUnitTestReport {
+    csv.enabled false
+    html.enabled false
+    xml.enabled true
+}
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -39,6 +53,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -68,6 +85,10 @@ ext {
     idling_resource_version = "3.2.0"
     livedata_testing_version = "1.1.0"
     lifecycle_version = "2.2.0"
+    test_runner_version = "1.2.0"
+    mockito_version = "2.6.2"
+    mockito_kotlin_version = "2.2.0"
+    jaxb_version = "2.3.1"
 
     room_version = "2.2.5"
     paging_version = "2.1.2"
@@ -107,10 +128,16 @@ dependencies {
     implementation "androidx.paging:paging-runtime:$paging_version"
     kapt "androidx.room:room-compiler:$room_version"
 
+    testImplementation "androidx.test:runner:$test_runner_version"
     implementation "com.jakewharton.timber:timber:$timber_version"
     testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_version"
     implementation "androidx.test.espresso:espresso-idling-resource:$idling_resource_version"
     testImplementation "com.jraska.livedata:testing-ktx:$livedata_testing_version"
     testImplementation "android.arch.core:core-testing:$lifecycle_version"
     testImplementation "org.koin:koin-test:$koin_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+    implementation "javax.xml.bind:jaxb-api:$jaxb_version"
+
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
+
 }

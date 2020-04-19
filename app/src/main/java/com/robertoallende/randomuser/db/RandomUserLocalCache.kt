@@ -10,7 +10,7 @@ import java.util.concurrent.Executor
  * correct executor.
  */
 class RandomUserLocalCache(
-    private val userDao: UserDao,
+    private val database: UserDatabase,
     private val ioExecutor: Executor
 ) {
 
@@ -20,7 +20,7 @@ class RandomUserLocalCache(
     fun insert(users: List<User>, insertFinished: () -> Unit) {
         ioExecutor.execute {
             Timber.d("RandomUserLocalCache inserting ${users.size} users")
-            userDao.insert(users)
+            database.userDao().insert(users)
             insertFinished()
         }
     }
@@ -34,7 +34,7 @@ class RandomUserLocalCache(
     fun usersByName(name: String): DataSource.Factory<Int, User> {
         // appending '%' so we can allow other characters to be before and after the query string
         val query = "%${name.replace(' ', '%')}%"
-        return userDao.usersByName(query)
+        return database.userDao().usersByName(query)
     }
 
     /**
@@ -44,6 +44,6 @@ class RandomUserLocalCache(
      * @param name user name
      */
     fun allUsers(): DataSource.Factory<Int, User> {
-        return userDao.allUsers()
+        return database.userDao().allUsers()
     }
 }

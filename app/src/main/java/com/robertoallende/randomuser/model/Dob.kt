@@ -7,6 +7,8 @@ import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
+import timber.log.Timber
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,8 +31,12 @@ data class Dob(
         val apiIsoFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
         val humanFormat = SimpleDateFormat("MMM dd, yyyy", Locale.US)
 
-        val apiDate = apiIsoFormat.parse(date)
-        return humanFormat.format(apiDate)
+        return try {
+            humanFormat.format(apiIsoFormat.parse(date))
+        } catch (e: ParseException) {
+            Timber.e("Dob.asString() Error parsing $date")
+            ""
+        }
     }
 
     companion object {

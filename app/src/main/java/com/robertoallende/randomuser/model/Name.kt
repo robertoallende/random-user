@@ -26,7 +26,18 @@ data class Name(
     var title: String?
 ) : Parcelable {
 
-    fun fullName(): String = "$title $first $last"
+    fun fullName(): String {
+        val builder = StringBuilder()
+
+        if (title?.isNotEmpty() == true) builder.append(title)
+        if (builder.toString().isNotEmpty() && first.isNotEmpty()) builder.append(" ")
+        if (first.isNotEmpty()) builder.append(first)
+        if (builder.toString().isNotEmpty() && last.isNotEmpty()) builder.append(" ")
+        if (last.isNotEmpty()) builder.append(last)
+
+        return builder.toString()
+    }
+
 
     companion object {
         const val TABLE = "NameEntity"

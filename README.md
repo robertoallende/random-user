@@ -41,10 +41,6 @@ When the user scrolls, the PagedList requests that the DataSource load more data
 
 - Empty cases and Error Exceptions
 
-## Further Improvements
-
-- User Search: the query has been implemented but not exposed to the UI
-
 - API Mocking: I would use MockWebServer to mock API responses.
 
 - Add IdlingResources for testing
@@ -53,7 +49,11 @@ When the user scrolls, the PagedList requests that the DataSource load more data
 
 - Enable code test coverage with JaCoCo
 
+## Further Improvements
+
+- User Search: the query has been implemented but not exposed to the UI
+
 - Add Swipe to Refresh or make UserListViewModel aware of connection status to automatically update user lists, in particular for the empty result case.
 
-- Improve network erros to make them more user friendly.
+- Improve network errors to make them more user friendly.
 

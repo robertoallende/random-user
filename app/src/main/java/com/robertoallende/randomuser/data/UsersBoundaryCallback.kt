@@ -3,6 +3,7 @@ package com.robertoallende.randomuser.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
+import com.robertoallende.randomuser.RadomUserIdlingResource
 import com.robertoallende.randomuser.api.RandomUserService
 import com.robertoallende.randomuser.db.RandomUserLocalCache
 import com.robertoallende.randomuser.model.User
@@ -18,7 +19,8 @@ class UsersBoundaryCallback(
     private val query: String,
     private val service: RandomUserService,
     private val cache: RandomUserLocalCache,
-    private val scope: CoroutineScope
+    private val scope: CoroutineScope,
+    private val idlingResource: RadomUserIdlingResource
 ) : PagedList.BoundaryCallback<User>() {
 
     // keep the last requested page. When the request is successful, increment the page number.
@@ -54,6 +56,7 @@ class UsersBoundaryCallback(
     }
 
     private suspend fun requestAndSaveData(query: String) {
+        idlingResource.increment()
         try {
             if (isRequestInProgress) return
             isRequestInProgress = true
@@ -65,7 +68,10 @@ class UsersBoundaryCallback(
         } catch (e: Exception) {
             Timber.e("UsersBoundaryCallback.requestAndSaveData: ${e.message}")
             _networkErrors.postValue(e.message)
+        } finally {
+            idlingResource.decrement()
         }
+
     }
 
     companion object {
