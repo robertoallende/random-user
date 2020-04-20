@@ -36,13 +36,13 @@ An Android Client that fetches and displays data from randomuser.me.
 
 - User Search: the query has been implemented but not exposed to the UI
 
-- Add Swipe to Refresh or make UserListViewModel aware of connection status to automatically update user lists, in particular for the empty result case.
+- Add Swipe to Refresh or make UserListViewModel aware of connection status to automatically update user lists, in particular for the empty result case
 
-- Improve network errors to make them more user friendly.
+- Improve network errors to make them more user friendly
 
 - Improve code coverage with Unit Tests
 
-- Add Instrumented Tests with Espresso.
+- Add Instrumented Tests with Espresso
 
 ## Architecture
 
