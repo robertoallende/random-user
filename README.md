@@ -22,13 +22,15 @@ An Android Client that fetches and displays data from randomuser.me.
 
 - Empty cases and Error Exceptions
 
-- API Mocking: I would use MockWebServer to mock API responses.
-
 - Add IdlingResources for testing
 
-- Unit testing and UI test with Espresso.
+- Unit Tests setup and initial 10% code coverage
 
-- Enable code test coverage with JaCoCo
+- Enable code test coverage with JaCoCo, CodeCov
+
+- MockWebServer setup for integrated tests
+
+- CircleCi Integration
 
 ## Further Improvements
 
@@ -37,6 +39,10 @@ An Android Client that fetches and displays data from randomuser.me.
 - Add Swipe to Refresh or make UserListViewModel aware of connection status to automatically update user lists, in particular for the empty result case.
 
 - Improve network errors to make them more user friendly.
+
+- Improve code coverage with Unit Tests
+
+- Add Instrumented Tests with Espresso.
 
 ## Architecture
 
