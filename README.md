@@ -1,6 +1,6 @@
 # Random User Client for Android
-[![codecov.io](https://codecov.io/gh/robertoallende/random-user/commit/21ba8bf472896b06b6c7b9fc280b50c82384dd2a/graphs/badge.svg?branch=develop)](
-https://codecov.io/gh/robertoallende/random-user/commit/21ba8bf472896b06b6c7b9fc280b50c82384dd2a?branch=develop)
+[![codecov.io](https://codecov.io/gh/robertoallende/random-user/commit/affdb0ccbfed7fefc14e8c064ea208d3caf19601/graphs/badge.svg?branch=develop)](
+https://codecov.io/gh/robertoallende/random-user/commit/affdb0ccbfed7fefc14e8c064ea208d3caf19601?branch=develop)
 
 An Android Client that fetches and displays data from randomuser.me.
 

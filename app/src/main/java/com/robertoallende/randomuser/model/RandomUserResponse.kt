@@ -7,6 +7,7 @@ import com.squareup.moshi.JsonClass
 data class RandomUserResponse(
     @Json(name = "info")
     val info: Info?,
+
     @Json(name = "results")
     val users: List<User>?
 )

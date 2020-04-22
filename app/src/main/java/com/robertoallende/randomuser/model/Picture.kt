@@ -24,6 +24,7 @@ data class Picture(
     @ColumnInfo(name = "thumbnail")
     @Json(name = "thumbnail")
     val thumbnail: String
+
 ) : Parcelable {
     companion object {
         const val TABLE = "PictureEntity"
