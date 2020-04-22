@@ -5,6 +5,5 @@ import com.robertoallende.randomuser.data.RandomUserRepository
 import com.robertoallende.randomuser.model.User
 
 class UserDetailViewModel(
-    val user: User,
-    private val repository: RandomUserRepository
+    val user: User
 ) : BaseViewModel<UserDetailEvent>()

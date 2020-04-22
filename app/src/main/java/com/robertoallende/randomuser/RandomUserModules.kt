@@ -75,6 +75,6 @@ val userListViewModel = module {
 
 val userDetailViewModel = module {
     viewModel { (user: User) ->
-        UserDetailViewModel(user, get())
+        UserDetailViewModel(user)
     }
 }

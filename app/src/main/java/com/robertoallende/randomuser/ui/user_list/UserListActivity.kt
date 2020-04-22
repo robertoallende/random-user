@@ -1,14 +1,9 @@
 package com.robertoallende.randomuser.ui.user_list
 
-import android.content.res.Resources
 import android.os.Bundle
-import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
-import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
@@ -20,7 +15,6 @@ import com.robertoallende.randomuser.model.User
 import com.robertoallende.randomuser.ui.user_detail.UserDetailActivity
 import kotlinx.android.synthetic.main.item_user.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 
 class UserListActivity : BaseActivity<UserListEvent, UserListViewModel>() {
