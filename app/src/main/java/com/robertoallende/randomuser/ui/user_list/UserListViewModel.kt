@@ -13,6 +13,7 @@ class UserListViewModel(
     private val repository: RandomUserRepository?
 ) : BaseViewModel<UserListEvent>() {
 
+    // TODO: Improve _randomUsers implementation as described at https://proandroiddev.com/when-to-load-data-in-viewmodels-ad9616940da7
     private val _randomUsers = repository?.getUsers(viewModelScope)
     val randomUsers: LiveData<PagedList<User>>? = _randomUsers?.data
     val networkError: LiveData<String>? = _randomUsers?.networkErrors
